@@ -1,9 +1,9 @@
 version: "3.8"
 services:
-  app:
+  backend:
     build:
-      context: ./backend
-      dockerfile: ./Dockerfile
+      context: .
+      dockerfile: ./docker/backend/Dockerfile
     env_file:
       - ./backend/.env
     tty: true
