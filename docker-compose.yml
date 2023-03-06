@@ -1,0 +1,31 @@
+version: "3.8"
+services:
+  app:
+    build:
+      context: ./backend
+      dockerfile: ./Dockerfile
+    env_file:
+      - ./backend/.env
+    tty: true
+    depends_on:
+      - db
+    volumes:
+      - ./backend:/usr/src/app
+    ports:
+      - "3000:3000"
+    environment:
+      - TZ=Asia/Tokyo
+
+  db:
+    image: mysql:8.0.31
+    platform: linux/amd64
+    env_file: ./db/.env
+    command: --default-authentication-plugin=mysql_native_password
+    restart: always
+    volumes:
+      - ./db/data:/var/lib/mysql
+      - ./db/conf.d:/etc/mysql/conf.d
+    ports:
+      - 3306:3306
+    environment:
+      TZ: Asia/Tokyo
