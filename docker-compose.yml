@@ -15,7 +15,6 @@ services:
       - "3000:3000"
     environment:
       - TZ=Asia/Tokyo
-
   db:
     image: mysql:8.0.31
     platform: linux/amd64
