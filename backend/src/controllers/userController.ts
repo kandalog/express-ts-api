@@ -1,11 +1,25 @@
 import { Request, Response } from "express";
-import { UsersService } from "../services/userService";
+import { UserService } from "../services/userService";
+import { NewUser } from "../models";
 
-const usersService = new UsersService();
+const userService = new UserService();
 
 export class UsersController {
-  root(req: Request, res: Response) {
-    const message = usersService.root();
-    res.status(200).json({ message });
+  async findAll(req: Request, res: Response) {
+    try {
+      const users = await userService.findAll();
+      res.status(200).json(users);
+    } catch (err) {
+      res.status(500).json(err);
+    }
+  }
+
+  async create(req: Request<{}, {}, NewUser>, res: Response) {
+    try {
+      const user = await userService.create(req.body);
+      res.status(200).json(user);
+    } catch (err) {
+      res.status(500).json(err);
+    }
   }
 }
