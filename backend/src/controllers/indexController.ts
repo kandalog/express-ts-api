@@ -1,5 +1,5 @@
 import { Request, Response } from "express";
-import { IndexService } from "../services";
+import { IndexService } from "../services/indexService";
 
 const indexService = new IndexService();
 

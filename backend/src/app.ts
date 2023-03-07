@@ -6,8 +6,8 @@ import morgan from "morgan";
 import * as dotenv from "dotenv";
 dotenv.config();
 
-import indexRouter from "./routes/index";
-import usersRouter from "./routes/users";
+import indexRouter from "./routes/indexRouter";
+import userRouter from "./routes/userRouter";
 
 const app = express();
 
@@ -19,6 +19,6 @@ app.use(morgan("dev"));
 
 // Routes
 app.use("/", indexRouter);
-app.use("/users", usersRouter);
+app.use("/users", userRouter);
 
 export default app;
