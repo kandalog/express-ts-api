@@ -1,4 +1,3 @@
-// Controllerとメソッド名がかぶるためClassで定義する
 import { PrismaClient, User } from "@prisma/client";
 
 const prisma = new PrismaClient();

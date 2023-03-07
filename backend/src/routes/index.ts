@@ -1,12 +1,9 @@
 import express from "express";
-import { IndexService } from "../services";
-import { findAll } from "../controllers";
+import { IndexController } from "../controllers";
 
-// const indexService = new IndexService();
-// const indexController = new IndexController(indexService);
-
+const indexController = new IndexController();
 const router = express.Router();
 
-router.get("/", findAll);
+router.get("/", indexController.findAll);
 
 export default router;
