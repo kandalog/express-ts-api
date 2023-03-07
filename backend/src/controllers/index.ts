@@ -4,12 +4,8 @@ import { IndexService } from "../services";
 const indexService = new IndexService();
 
 export class IndexController {
-  async findAll(req: Request, res: Response) {
-    try {
-      const users = await indexService.findAll();
-      res.status(200).json(users);
-    } catch (err) {
-      res.status(500).json(err);
-    }
+  root(req: Request, res: Response) {
+    const message = indexService.root();
+    res.status(200).json({ message });
   }
 }
