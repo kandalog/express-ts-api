@@ -6,6 +6,8 @@ import morgan from "morgan";
 import * as dotenv from "dotenv";
 dotenv.config();
 
+import indexRouter from "./routes/index";
+
 const app = express();
 
 app.use(express.json());
@@ -14,8 +16,7 @@ app.use(helmet());
 app.use(compression());
 app.use(morgan("dev"));
 
-app.get("/", (req: Request<{}, {}, {}>, res: Response) => {
-  res.status(200).json({ message: "root" });
-});
+// Routes
+app.use("/api", indexRouter);
 
 export default app;
